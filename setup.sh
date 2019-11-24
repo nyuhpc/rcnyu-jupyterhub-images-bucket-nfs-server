@@ -5,7 +5,7 @@ export GOOGLE_APPLICATION_CREDENTIALS=/accounts/key.json
 [ -f ${GOOGLE_APPLICATION_CREDENTIALS} ] && echo "Credentials exist." || echo "Credentials does not exist."
 
 echo "Running fuse, bucket is ${BUCKET}"
-gcsfuse -o nonempty,allow_other --file-mode=777 --dir-mode=777 ${BUCKET} /exports
+gcsfuse -o nonempty --uid=1001 ${BUCKET} /exports
 
 function start()
 {
