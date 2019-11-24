@@ -1,0 +1,10 @@
+steps:
+  # build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'us.gcr.io/jupyterhubgcp/rcnyu-jupyterhub-images-bucket-nfs-server', '.']
+  # push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'us.gcr.io/jupyterhubgcp/rcnyu-jupyterhub-images-bucket-nfs-server']
+images:
+- us.gcr.io/jupyterhubgcp/rcnyu-jupyterhub-images-bucket-nfs-server
+timeout: 6000s 
