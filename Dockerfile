@@ -4,28 +4,6 @@ RUN apt-get -y update
 RUN apt-get install -y gnupg curl nfs-common nfs-kernel-server
 
 #############################################################################
-############################################################################
-RUN apt-get install -y git
-#### Setup gcloud
-# https://cloud.google.com/sdk/docs/downloads-apt-get
-RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-RUN apt-get install -y apt-transport-https ca-certificates
-RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
-RUN apt-get update && apt-get install -y google-cloud-sdk
-RUN apt-get install -y kubectl
-
-############################################################################
-## Install and Init HELM client 
-## (version shall match that on helm tiller)
-RUN curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash -s -- --version v2.16.1
-RUN helm init --client-only
-## add helm chart repo
-RUN helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
-RUN helm repo update
-#############################################################################
-#############################################################################
-
-#############################################################################
 #### Setup gsfuse
 ## https://github.com/GoogleCloudPlatform/gcsfuse/blob/master/docs/installing.md
 
