@@ -1,5 +1,8 @@
 FROM ubuntu:18.04
-RUN apt-get -y install /usr/bin/ps nfs-utils && apt-get clean
+
+RUN apt-get -y update
+RUN apt-get install -y gnupg curl nfs-utils
+
 RUN mkdir -p /exports
 ADD setup.sh /usr/local/bin/run_nfs.sh
 RUN chmod +x /usr/local/bin/run_nfs.sh
