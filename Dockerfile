@@ -8,7 +8,7 @@ RUN chmod +x /usr/local/bin/run_nfs.sh
 #### Setup gsfuse
 ## https://github.com/GoogleCloudPlatform/gcsfuse/blob/master/docs/installing.md
 
-ENV GCSFUSE_REPO=gcsfuse-`lsb_release -c -s`
+ENV GCSFUSE_REPO=gcsfuse-bionic
 RUN echo "deb http://packages.cloud.google.com/apt $GCSFUSE_REPO main" | tee /etc/apt/sources.list.d/gcsfuse.list
 RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 
