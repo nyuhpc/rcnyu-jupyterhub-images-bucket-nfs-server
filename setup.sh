@@ -4,8 +4,11 @@ echo "Running startup script"
 export GOOGLE_APPLICATION_CREDENTIALS=/accounts/key.json
 [ -f ${GOOGLE_APPLICATION_CREDENTIALS} ] && echo "Credentials exist." || echo "Credentials does not exist."
 
+
+## use --implicit-dirs
+## https://github.com/GoogleCloudPlatform/gcsfuse/blob/master/docs/semantics.md
 echo "Running fuse, bucket is ${BUCKET}"
-gcsfuse -o nonempty --uid=1001 ${BUCKET} /exports
+gcsfuse -o nonempty --implicit-dirs --uid=1001 ${BUCKET} /exports
 #gcsfuse -o nonempty ${BUCKET} /exports
 
 function start()
