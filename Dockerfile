@@ -1,11 +1,11 @@
-FROM centos
-RUN yum -y install /usr/bin/ps nfs-utils && yum clean all
+FROM ubuntu:18.04
+RUN apt-get -y install /usr/bin/ps nfs-utils && apt-get clean
 RUN mkdir -p /exports
 ADD setup.sh /usr/local/bin/run_nfs.sh
 RUN chmod +x /usr/local/bin/run_nfs.sh
 ADD gcsfuse.repo /etc/yum.repos.d/gcsfuse.repo
-RUN yum update -y
-RUN yum install gcsfuse -y
+RUN apt-get update -y
+RUN apt-get install gcsfuse -y
 
 # Expose volume
 VOLUME /exports
