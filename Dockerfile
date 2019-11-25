@@ -6,6 +6,10 @@ RUN apt-get install -y gnupg curl nfs-common nfs-kernel-server
 #############################################################################
 #### Setup gsfuse
 ## https://github.com/GoogleCloudPlatform/gcsfuse/blob/master/docs/installing.md
+
+## account key path (make sure secreat is created and mounted)
+ENV GOOGLE_APPLICATION_CREDENTIALS=/accounts/key.json
+
 ENV GCSFUSE_REPO=gcsfuse-bionic
 RUN echo "deb http://packages.cloud.google.com/apt $GCSFUSE_REPO main" | tee /etc/apt/sources.list.d/gcsfuse.list
 RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -

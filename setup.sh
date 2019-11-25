@@ -6,6 +6,7 @@ export GOOGLE_APPLICATION_CREDENTIALS=/accounts/key.json
 
 echo "Running fuse, bucket is ${BUCKET}"
 gcsfuse -o nonempty --uid=1001 ${BUCKET} /exports
+#gcsfuse -o nonempty ${BUCKET} /exports
 
 function start()
 {
