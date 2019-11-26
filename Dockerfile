@@ -1,7 +1,14 @@
 FROM ubuntu:18.04
 
 RUN apt-get -y update
-RUN apt-get install -y gnupg curl nfs-common nfs-kernel-server
+RUN apt-get install -y gnupg curl nfs-common nfs-kernel-server vim
+
+## timeZone setup
+ARG DEBIAN_FRONTEND=noninteractive
+ARG TZ=America/New_York
+RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime
+RUN apt-get install -y tzdata
+RUN dpkg-reconfigure --frontend noninteractive tzdata
 
 #############################################################################
 #### Setup gsfuse
